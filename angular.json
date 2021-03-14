@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "my-favory-artist"
+  "defaultProject": "my-favory-artist",
+  "cli": {
+    "analytics": false
+  }
 }
