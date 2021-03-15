@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { ArtistCardComponent } from './components/artist-card/artist-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DataRequestsInterceptor } from './shared/interceptors/data-requests.interceptor';
 
 
 @NgModule({
@@ -20,9 +22,13 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: DataRequestsInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
