@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { ArtistCardComponent } from './components/artist-card/artist-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,14 +12,13 @@ import { DataRequestsInterceptor } from './shared/interceptors/data-requests.int
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ArtistCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule
   ],
