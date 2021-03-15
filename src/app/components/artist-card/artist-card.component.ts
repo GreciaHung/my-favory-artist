@@ -13,3 +13,4 @@ export class ArtistCardComponent implements OnInit {
   }
 
 }
+
