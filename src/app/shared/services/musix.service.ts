@@ -20,8 +20,6 @@ export class MusixService {
       }
     })
 
-
-
     return this.httpClient.get<any>(
       environment.baseUrl + END_POINTS_URLS.artist_search,
       { params }

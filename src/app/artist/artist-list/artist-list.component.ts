@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { MusixService } from 'src/app/shared/services/musix.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ArtistListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.musixService.searchArtist('green day').subscribe(res => {
+    this.musixService.searchArtist('shakira')
+    .subscribe(res => {
       console.log(res);
     })
   }
