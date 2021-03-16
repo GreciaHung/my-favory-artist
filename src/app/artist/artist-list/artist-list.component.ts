@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MusixService } from 'src/app/shared/services/musix.service';
+import { ArtistList, DataRequest } from 'src/app/shared/global-interfaces';
+import { ArtistManagerService } from 'src/app/shared/managers/artist-manager/artist-manager.service';
 
 @Component({
   selector: 'app-artist-list',
@@ -9,14 +10,15 @@ import { MusixService } from 'src/app/shared/services/musix.service';
 export class ArtistListComponent implements OnInit {
 
   constructor(
-    private readonly musixService: MusixService
+    private readonly artistManager: ArtistManagerService
   ) { }
 
   ngOnInit(): void {
-    this.musixService.searchArtist('shakira')
-    .subscribe(res => {
+    this.artistManager.artistList$.subscribe((res: DataRequest<ArtistList>) => {
       console.log(res);
-    })
+    });
+
+    this.artistManager.getArtistTop();
   }
 
 }

@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class DataRequestsInterceptor implements HttpInterceptor {
@@ -17,7 +18,7 @@ export class DataRequestsInterceptor implements HttpInterceptor {
     const newReq = request.clone({
       url: 'https://cors-access-allow.herokuapp.com/' + request.url,
       params: (request.params ? request.params : new HttpParams())
-        .set('apikey', 'd8c08ac0ab57c7902a409c9816e1d1da')
+        .set('apikey', environment.apiKey)
     });
 
     return next.handle(newReq)
