@@ -4,18 +4,25 @@
     flex-direction: column;
     align-items: center;
     background-color: $secondary-color;
-    padding: 20px 30px;
+    padding: 0px 10px 10px 10px;
     color: white;
-    max-width: 200px;
-    margin: 30px 20px;
+    margin: 20px 10px;
     box-shadow: 5px 5px 8px  2px rgba(0, 0, 0, 0.12);
 }
 
-.card-img{
+.content-image-artist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 100px;
-    border-radius: 50%;
+    height: auto;
+    padding: 10px;
+    margin: 0px 0px 10px 0px;
+    background-image: url('../../../assets/images/artista.jpg');
+}
 
+.content-image-artist h2{
+    margin-top: 16px;
 }
 
 .launch-country, .content-data{
@@ -27,8 +34,9 @@
 .country{
     display:flex;
     justify-content: space-between;
-    width: 30%;
+    align-items: center;
 }
 .country img{
  max-width: 30px;
+ margin-right: 5px;
 }

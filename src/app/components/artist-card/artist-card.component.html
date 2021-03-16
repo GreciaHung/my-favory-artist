@@ -1,25 +1,32 @@
 <div class="card">
-  <button mat-icon-button matTooltip="Agregar a favoritos">
-    <mat-icon>
-      favorite
-    </mat-icon>
-  </button>
-  <h2>Shakira</h2>
-  <div class="launch-country">
-    <div>18/12/2019</div>
-    <div class="country">
-      <div>VE</div>
-      <img src="../../assets/images/venezuela.png" alt="" />
+  <div class="content-image-artist">
+    <div class="content-data">
+      <div class="country">
+        <img src="../../assets/images/venezuela.png" alt="" />
+        <div> {{data.pais}} </div>
+      </div>
+      <button mat-icon-button matTooltip="Agregar a favoritos">
+        <mat-icon>
+          favorite
+        </mat-icon>
+      </button>
+    </div>
+    <h2>{{data.artista}}</h2>
+    <div class="launch-country">
+      <div> {{data.fecha  | date:'mediumDate'}}</div>
     </div>
   </div>
-  <img class="card-img" src="../../assets/images/artista.jpg" alt="" />
   <div class="content-data">
     <button mat-icon-button>
       <mat-icon>
-        <img style="width: 24px" src="../../assets/images/twitter_icon.png" alt="" />
+        <img
+          style="width: 24px"
+          src="../../assets/images/twitter_icon.png"
+          alt=""
+        />
       </mat-icon>
     </button>
-    <button  mat-icon-button matTooltip="Ver más">
+    <button mat-icon-button matTooltip="Ver más">
       <mat-icon>
         add
       </mat-icon>
