@@ -36,7 +36,7 @@ export class ArtistManagerService {
     });
   }
 
-  getArtistTop(page = '1', page_size = '6', country = 'us') {
+  getArtistTop(page = '1', page_size = '12', country = 'us') {
     this.setCurrentState(true);
 
     this.musixService.artistTop({
