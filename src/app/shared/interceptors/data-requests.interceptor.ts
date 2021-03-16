@@ -4,9 +4,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpParams
+  HttpParams,
+  HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class DataRequestsInterceptor implements HttpInterceptor {
@@ -18,6 +20,13 @@ export class DataRequestsInterceptor implements HttpInterceptor {
         .set('apikey', 'd8c08ac0ab57c7902a409c9816e1d1da')
     });
 
-    return next.handle(newReq);
+    return next.handle(newReq)
+      .pipe(
+        map(res => {
+          if (res instanceof HttpResponse) {
+            res = res.clone<any>({ body: res.body.message.body });
+          }
+          return res;
+        }));
   }
 }

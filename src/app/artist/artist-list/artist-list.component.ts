@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { MusixService } from 'src/app/shared/services/musix.service';
 
 @Component({
