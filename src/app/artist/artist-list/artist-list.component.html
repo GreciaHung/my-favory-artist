@@ -1,2 +1,12 @@
-<app-search-bar></app-search-bar>
-<app-artist-card></app-artist-card>
+<div>
+  <img src="../../../assets/images/logo_aranda.png" alt="" />
+  <app-search-bar></app-search-bar>
+  <div class="container-section">
+    <div class="container-cards">
+      <!-- <app-mask-loading [loading]="loading"></app-mask-loading>-->
+      <div class="ContainerCard" *ngFor="let data of ArtistList">
+        <app-artist-card [data]="data"></app-artist-card>
+      </div>
+    </div>
+  </div>
+</div>
