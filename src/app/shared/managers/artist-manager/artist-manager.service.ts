@@ -49,4 +49,19 @@ export class ArtistManagerService {
       this.setCurrentState(false);
     });
   }
+
+  getArtistSearch(artistName: string, page = '1', page_size = '12') {
+    this.setCurrentState(true);
+
+    this.musixService.searchArtist(
+      artistName,
+      { page, page_size }
+    ).subscribe((res: ArtistList) => {
+      this.setCurrentState(false, true, res);
+    }, () => {
+      this.setCurrentState(false);
+    });
+  }
+
+
 }

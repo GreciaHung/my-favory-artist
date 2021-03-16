@@ -25,9 +25,10 @@ export class MusixService {
     );
   }
 
-  searchArtist(artistName: string): Observable<any> {
+  searchArtist(artistName: string, paginate: PaginateReq): Observable<any> {
     const params: HttpParams = new HttpParams({
       fromObject: {
+        ...paginate,
         q_artist: artistName
       }
     })

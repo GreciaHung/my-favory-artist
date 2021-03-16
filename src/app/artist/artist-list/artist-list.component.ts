@@ -18,7 +18,8 @@ export class ArtistListComponent implements OnInit {
       console.log(res);
     });
 
-    this.artistManager.getArtistTop();
+    // this.artistManager.getArtistTop();
+    this.artistManager.getArtistSearch('Shakira');
   }
 
 }

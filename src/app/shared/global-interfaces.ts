@@ -1,7 +1,7 @@
 export interface PaginateReq {
   page: string;
   page_size: string;
-  country: string;
+  country?: string;
 }
 
 export interface DataRequest<T> {
