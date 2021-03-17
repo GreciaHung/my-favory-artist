@@ -38,4 +38,17 @@ export class MusixService {
       { params }
     );
   }
+
+  getArtistDetails(artistId: number): Observable<any> {
+    const params: HttpParams = new HttpParams({
+      fromObject: {
+        artist_id: String(artistId)
+      }
+    })
+
+    return this.httpClient.get<any>(
+      environment.baseUrl + END_POINTS_URLS.artist_get,
+      { params }
+    );
+  }
 }
