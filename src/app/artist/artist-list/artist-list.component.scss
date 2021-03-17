@@ -1,22 +1,23 @@
-.container-section{
-    display: flex;
+.container-section {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 20px;
+}
+
+.container-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: stretch;
+}
+
+.container-card {
+  width: 250px;
+  margin: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container-cards {
     justify-content: center;
-    flex-flow: row wrap;
-    margin: 20px;
-}
-
-.container-cards{
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: stretch;
-}
-.ContainerCard{
-    width: 250px;
-    margin: 10px;
-   }
-
-   @media only screen and (max-width: 768px) {
-  .container-cards{
-      justify-content: center;
   }
-  }
+}

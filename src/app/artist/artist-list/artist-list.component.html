@@ -4,8 +4,8 @@
   <div class="container-section">
     <div class="container-cards">
       <!-- <app-mask-loading [loading]="loading"></app-mask-loading>-->
-      <div class="ContainerCard" *ngFor="let data of ArtistList">
-        <app-artist-card [data]="data"></app-artist-card>
+      <div class="container-card" *ngFor="let data of artistList">
+        <app-artist-card [data]="data.artist"></app-artist-card>
       </div>
     </div>
   </div>

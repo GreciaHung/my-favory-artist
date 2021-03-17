@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Input} from '@angular/core';
+import { ArtistData } from '../../shared/global-interfaces';
 
 @Component({
   selector: 'app-artist-card',
@@ -8,7 +9,7 @@ import {Input} from '@angular/core';
 })
 export class ArtistCardComponent implements OnInit {
   @Input()
-  public data: any;
+  public data: ArtistData;
 
   constructor() { }
 
