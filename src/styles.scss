@@ -35,5 +35,8 @@ $my-favory-artist-theme: mat-light-theme((
 
 /*fuente*/
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

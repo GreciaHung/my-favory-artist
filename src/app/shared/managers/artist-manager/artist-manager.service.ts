@@ -36,32 +36,32 @@ export class ArtistManagerService {
     });
   }
 
-  getArtistTop(page = '1', page_size = '12', country = 'us') {
-    this.setCurrentState(true);
+  getArtist(artistName?: string, page = '1', page_size = '12', country = 'us') {
+    const artistRequest = artistName
+      ? this.getArtistSearch(artistName, page, page_size)
+      : this.getArtistTop(page, page_size, country);
 
-    this.musixService.artistTop({
+    this.setCurrentState(true);
+    artistRequest.subscribe((res: ArtistList) => {
+      this.setCurrentState(false, true, res);
+    }, () => {
+      this.setCurrentState(false);
+    });
+  }
+
+  private getArtistTop(page = '1', page_size = '12', country = 'us') {
+    return this.musixService.artistTop({
       page,
       page_size,
       country
-    }).subscribe((res: ArtistList) => {
-      this.setCurrentState(false, true, res);
-    }, () => {
-      this.setCurrentState(false);
-    });
+    })
   }
 
-  getArtistSearch(artistName: string, page = '1', page_size = '12') {
-    this.setCurrentState(true);
-
-    this.musixService.searchArtist(
+  private getArtistSearch(artistName: string, page = '1', page_size = '12') {
+    return this.musixService.searchArtist(
       artistName,
       { page, page_size }
-    ).subscribe((res: ArtistList) => {
-      this.setCurrentState(false, true, res);
-    }, () => {
-      this.setCurrentState(false);
-    });
+    )
   }
-
 
 }
