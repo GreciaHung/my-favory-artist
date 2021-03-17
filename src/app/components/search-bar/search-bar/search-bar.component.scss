@@ -1,6 +1,8 @@
-@import "../../../../assets/theme.scss";
-
 .search-field {
   width: 100%;
-  height: $height-search;
+
+  .material-icons {
+    cursor: pointer;
+    color: gray;
+  }
 }

@@ -34,11 +34,26 @@
   }
 }
 
+.container-search {
+  display: flex;
+  justify-content: center;
+  height: $height-search;
+  margin: $margin-height-search 0;
+
+  > * {
+    width: 100%;
+    max-width: 800px;
+  }
+}
+
 .container-section {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  height: calc(100vh - 224px - 58px);
+  height: calc(
+    100vh - #{$height-header} - #{$height-search} -
+      (#{$margin-height-search} * 2)
+  );
   overflow-y: auto;
 }
 

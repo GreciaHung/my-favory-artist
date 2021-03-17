@@ -16,7 +16,6 @@ export class ArtistListComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistManager.artistList$.subscribe((res: DataRequest<ArtistList>) => {
-      console.log(res);
       this.artistList = res.data.artist_list;
     });
 

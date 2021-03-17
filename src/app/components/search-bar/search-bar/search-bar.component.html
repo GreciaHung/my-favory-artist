@@ -1,7 +1,6 @@
-<mat-form-field class="search-field">
-  <mat-label>Buscar artista</mat-label>
+<mat-form-field appearance="outline" class="search-field">
+  <mat-label>Artist Search</mat-label>
   <input #inputRef  (keydown.enter)="sendValue.emit($event.target.value)" matInput type="text" />
-  <button type="button" (click)="sendValue.emit(inputRef.value)" mat-icon-button matSuffix aria-label="Search">
-    <span class="material-icons">search</span>
-  </button>
+  <span (click)="clear(inputRef)" matPrefix class="material-icons">close</span>
+  <span (click)="sendValue.emit(inputRef.value)" matSuffix class="material-icons">search</span>
 </mat-form-field>
