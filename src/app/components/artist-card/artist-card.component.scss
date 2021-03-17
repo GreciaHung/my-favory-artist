@@ -58,3 +58,19 @@
   max-width: 30px;
   margin-right: 5px;
 }
+
+.favorite {
+  color: red;
+}
+
+.btn-twitter {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.disable-twitter {
+    filter: contrast(0);
+    pointer-events: none;
+  }
+}

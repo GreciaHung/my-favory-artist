@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PaginateReq } from '../global-interfaces';
+import { ArtistList, PaginateReq } from '../global-interfaces';
 import { END_POINTS_URLS } from '../global-variables';
 
 @Injectable({
@@ -14,18 +14,18 @@ export class MusixService {
     private readonly httpClient: HttpClient
   ) { }
 
-  artistTop(paginate: PaginateReq): Observable<any> {
+  artistTop(paginate: PaginateReq): Observable<ArtistList> {
     const params: HttpParams = new HttpParams({
       fromObject: { ...paginate }
     })
 
-    return this.httpClient.get<any>(
+    return this.httpClient.get<ArtistList>(
       environment.baseUrl + END_POINTS_URLS.artist_artists_get,
       { params }
     );
   }
 
-  searchArtist(artistName: string, paginate: PaginateReq): Observable<any> {
+  searchArtist(artistName: string, paginate: PaginateReq): Observable<ArtistList> {
     const params: HttpParams = new HttpParams({
       fromObject: {
         ...paginate,
@@ -33,7 +33,7 @@ export class MusixService {
       }
     })
 
-    return this.httpClient.get<any>(
+    return this.httpClient.get<ArtistList>(
       environment.baseUrl + END_POINTS_URLS.artist_search,
       { params }
     );

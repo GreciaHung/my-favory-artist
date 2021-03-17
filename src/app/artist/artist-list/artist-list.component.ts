@@ -26,4 +26,8 @@ export class ArtistListComponent implements OnInit {
     this.artistManager.getArtist(searchValue);
   }
 
+  addFavorite(id: number) {
+    this.artistManager.addFavoriteArtist(id);
+  }
+
 }

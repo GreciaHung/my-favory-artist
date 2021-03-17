@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {Input} from '@angular/core';
 import { ArtistData } from '../../shared/global-interfaces';
 
@@ -7,14 +7,11 @@ import { ArtistData } from '../../shared/global-interfaces';
   templateUrl: './artist-card.component.html',
   styleUrls: ['./artist-card.component.scss']
 })
-export class ArtistCardComponent implements OnInit {
+export class ArtistCardComponent {
   @Input()
-  public data: ArtistData;
+  data: ArtistData;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Output()
+  addFavorite = new EventEmitter<number>();
 }
 

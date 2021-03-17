@@ -6,7 +6,12 @@
         <img src="../../assets/images/venezuela.png" alt="" />
         <div>{{ data.artist_country }}</div>
       </div>
-      <button mat-icon-button matTooltip="Agregar a favoritos">
+      <button
+        [class.favorite]="data.is_favorite"
+        (click)="addFavorite.emit(data.artist_id)"
+        mat-icon-button
+        matTooltip="Agregar a favoritos"
+      >
         <mat-icon> favorite </mat-icon>
       </button>
     </div>
@@ -16,7 +21,12 @@
     </div>
   </div>
   <div class="content-data">
-    <button mat-icon-button>
+    <a
+      class="btn-twitter"
+      [class.disable-twitter]="!data.artist_twitter_url"
+      [href]="data.artist_twitter_url"
+      target="_blank"
+    >
       <mat-icon>
         <img
           style="width: 24px"
@@ -24,7 +34,7 @@
           alt=""
         />
       </mat-icon>
-    </button>
+    </a>
     <button mat-icon-button matTooltip="Ver más">
       <mat-icon> add </mat-icon>
     </button>
