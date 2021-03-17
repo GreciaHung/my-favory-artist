@@ -1,12 +1,27 @@
-<div>
-  <img src="../../../assets/images/logo_aranda.png" alt="" />
-  <app-search-bar></app-search-bar>
-  <div class="container-section">
-    <div class="container-cards">
-      <!-- <app-mask-loading [loading]="loading"></app-mask-loading>-->
-      <div class="container-card" *ngFor="let data of artistList">
-        <app-artist-card [data]="data.artist"></app-artist-card>
-      </div>
-    </div>
+<div class="container-header">
+  <div class="container-logo">
+    <img
+      class="logo-img"
+      src="../../../assets/images/logo_aranda.png"
+      alt="logo"
+    />
+  </div>
+  <div class="power-by-container">
+    <span>Power by</span>
+    <img
+      class="power-by-img"
+      src="../../../assets/images/musixmatch.png"
+      alt="logo"
+    />
+  </div>
+</div>
+<app-search-bar (sendValue)="search($event)"></app-search-bar>
+<div class="container-section">
+  <div class="container-cards">
+    <!-- <app-mask-loading [loading]="loading"></app-mask-loading>-->
+    <app-artist-card
+      *ngFor="let data of artistList"
+      [data]="data.artist"
+    ></app-artist-card>
   </div>
 </div>

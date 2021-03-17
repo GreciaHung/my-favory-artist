@@ -20,8 +20,11 @@ export class ArtistListComponent implements OnInit {
       this.artistList = res.data.artist_list;
     });
 
-    this.artistManager.getArtistTop();
-    // this.artistManager.getArtistSearch('Shakira');
+    this.artistManager.getArtist();
+  }
+
+  search(searchValue: string) {
+    this.artistManager.getArtist(searchValue);
   }
 
 }
