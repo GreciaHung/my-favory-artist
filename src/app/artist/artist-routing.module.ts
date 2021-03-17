@@ -6,7 +6,12 @@ import { ArtistDetailsComponent } from '../shared/dialogs/artist-details/artist-
 const routes: Routes = [{
   path: '',
   component: ArtistListComponent
+},
+{
+  path: 'details',
+  component: ArtistDetailsComponent
 }
+
 ];
 
 @NgModule({
