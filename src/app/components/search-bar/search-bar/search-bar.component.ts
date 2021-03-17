@@ -7,4 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SearchBarComponent {
   @Output() sendValue = new EventEmitter<string>();
+
+  clear(inputRef: HTMLInputElement) {
+    inputRef.value = '';
+    this.sendValue.emit('')
+  }
 }
