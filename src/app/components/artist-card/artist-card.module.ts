@@ -6,8 +6,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 
-
-
 @NgModule({
   declarations: [ArtistCardComponent],
   exports: [ArtistCardComponent],

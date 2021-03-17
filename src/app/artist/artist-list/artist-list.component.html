@@ -24,6 +24,7 @@
     <app-artist-card
       *ngFor="let data of artistList"
       [data]="data.artist"
+      (openDetails)="openDetails($event)"
       (addFavorite)="addFavorite($event)"
     ></app-artist-card>
   </div>

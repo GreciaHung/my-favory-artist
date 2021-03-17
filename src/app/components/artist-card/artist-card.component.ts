@@ -13,5 +13,7 @@ export class ArtistCardComponent {
 
   @Output()
   addFavorite = new EventEmitter<number>();
+  @Output()
+  openDetails = new EventEmitter<ArtistData>();
 }
 

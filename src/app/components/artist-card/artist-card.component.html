@@ -35,7 +35,7 @@
         />
       </mat-icon>
     </a>
-    <button mat-icon-button matTooltip="Ver más">
+    <button (click)="openDetails.emit(data)" mat-icon-button matTooltip="Ver más">
       <mat-icon> add </mat-icon>
     </button>
   </div>
