@@ -12,6 +12,7 @@ import { ArtistManagerService } from '../../shared/managers/artist-manager/artis
 })
 export class ArtistListComponent implements OnInit {
   artistList: Artist[] = [];
+  loading = false;
   listType: ListType;
   ListType =  ListType;
 
@@ -28,6 +29,7 @@ export class ArtistListComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistManager.artistList$.subscribe((res: DataRequest<ArtistList>) => {
+      this.loading = res.loading;
       this.listType = res.data.list_type;
       this.artistList = res.data.artist_list;
     });

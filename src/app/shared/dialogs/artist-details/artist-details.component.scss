@@ -31,6 +31,12 @@
     height: 100%;
     padding: 10px;
     overflow-y: auto;
+
+    .album-title {
+      font-size: 18px;
+      font-weight: 650;
+      margin-right: 8px;
+    }
   }
 
   .hidden-loading {

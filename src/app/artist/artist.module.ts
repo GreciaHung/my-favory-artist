@@ -9,6 +9,7 @@ import { ArtistDetailsModule } from '../shared/dialogs/artist-details/artist-det
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [ArtistListComponent],
@@ -20,7 +21,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ArtistDetailsModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
   ]
 })
 export class ArtistModule { }

@@ -25,7 +25,7 @@
         (opened)="getTracks(data.album.album_id)"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> Album {{ data.album.album_name }} </mat-panel-title>
+          <mat-panel-title> <span class="album-title">Album:</span> {{ data.album.album_name }} </mat-panel-title>
         </mat-expansion-panel-header>
         <p *ngFor="let tackData of tackList">{{ tackData.track.track_name }}</p>
       </mat-expansion-panel>

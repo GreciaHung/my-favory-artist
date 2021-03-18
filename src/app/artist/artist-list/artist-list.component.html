@@ -32,8 +32,8 @@
   </div>
 </div>
 <div class="container-section">
+  <mat-progress-bar [class.hidden-loading]="!loading" mode="indeterminate"></mat-progress-bar>
   <div class="container-cards">
-    <!-- <app-mask-loading [loading]="loading"></app-mask-loading>-->
     <app-artist-card
       *ngFor="let data of artistList"
       [data]="data.artist"
