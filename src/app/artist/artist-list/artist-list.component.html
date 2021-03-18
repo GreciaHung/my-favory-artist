@@ -18,21 +18,20 @@
 <div class="container-search">
   <div class="current-title">
     {{ titleType[listType] }}
+    <div class="container-favorites mobile">
+      <ng-container *ngTemplateOutlet="favoriteRef"> </ng-container>
+    </div>
   </div>
   <app-search-bar (sendValue)="search($event)"></app-search-bar>
-  <div class="container-favorites">
-    <button
-      class="view-favorites"
-      (click)="viewFavorites()"
-      mat-icon-button
-      matTooltip="View favorite list"
-    >
-      <mat-icon> {{ listType === ListType.favorites ? "favorite" : "favorite_border" }} </mat-icon>
-    </button>
+  <div class="container-favorites desktop">
+    <ng-container *ngTemplateOutlet="favoriteRef"> </ng-container>
   </div>
 </div>
 <div class="container-section">
-  <mat-progress-bar [class.hidden-loading]="!loading" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar
+    [class.hidden-loading]="!loading"
+    mode="indeterminate"
+  ></mat-progress-bar>
   <div class="container-cards">
     <app-artist-card
       *ngFor="let data of artistList"
@@ -42,3 +41,16 @@
     ></app-artist-card>
   </div>
 </div>
+
+<ng-template #favoriteRef>
+  <button
+    class="view-favorites"
+    (click)="viewFavorites()"
+    mat-icon-button
+    matTooltip="View favorite list"
+  >
+    <mat-icon>
+      {{ listType === ListType.favorites ? "favorite" : "favorite_border" }}
+    </mat-icon>
+  </button>
+</ng-template>

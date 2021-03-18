@@ -1,4 +1,5 @@
 @import "../../../assets/theme.scss";
+@import "../../../assets/mixins/media-querys";
 
 .container-header {
   width: 100%;
@@ -12,7 +13,12 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    background: linear-gradient(180deg, #2a295c 0%, #fbc3db 60%, $background-layout 100%);
+    background: linear-gradient(
+      180deg,
+      #2a295c 0%,
+      #fbc3db 60%,
+      $background-layout 100%
+    );
   }
 
   .logo-img {
@@ -52,6 +58,14 @@
   .container-favorites {
     text-align: end;
 
+    &.desktop {
+      display: initial;
+    }
+
+    &.mobile {
+      display: none;
+    }
+
     > * {
       margin-right: 60px;
     }
@@ -89,4 +103,48 @@
 
 .view-favorites {
   color: $favorite-color;
+}
+
+@include phone-query {
+  .container-header {
+    height: inherit;
+
+    .logo-img {
+      width: 120px;
+    }
+  }
+
+  .container-search {
+    flex-direction: column;
+    margin: 15px 0 0;
+    height: inherit;
+
+    .current-title {
+      font-size: 25px;
+      display: flex;
+      justify-content: space-between;
+      width: inherit;
+      padding: 0 15px;
+    }
+
+    .container-favorites.desktop {
+      display: none;
+    }
+
+    .container-favorites.mobile {
+      display: initial;
+
+      .view-favorites {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .container-section {
+    min-height: calc(100vh - 279px);
+
+    .container-cards {
+      padding: 0.5rem;
+    }
+  }
 }

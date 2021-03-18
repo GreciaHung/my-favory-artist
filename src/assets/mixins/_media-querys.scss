@@ -1,0 +1,11 @@
+@mixin phone-query {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin phone-query-landscape {
+  @media (max-width: 699px) {
+    @content;
+  }
+}
