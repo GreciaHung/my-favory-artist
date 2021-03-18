@@ -14,7 +14,7 @@ export interface DataRequest<T> {
 
 export interface ArtistList {
   artist_list: Artist[],
-  list_type: ListType
+  list_type?: ListType
 }
 
 export interface Artist {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ListType } from '../../global-enums';
 import { Artist, ArtistList, DataRequest } from '../../global-interfaces';
@@ -61,12 +61,15 @@ export class ArtistManagerService {
     return favorites ? JSON.parse(favorites) : [];
   }
 
-  getArtist(artistName?: string, page = '1', page_size = '12', country = 'us') {
+  getArtist(artistName?: string, getFavorites = false, page = '1', page_size = '12', country = 'us') {
     const favorites = this.favorites;
     let artistRequest: Observable<ArtistList>;
     let listType: ListType;
 
-    if (artistName) {
+    if (getFavorites) {
+      artistRequest = this.getFavoriteList();
+      listType = ListType.favorites;
+    } else if (artistName) {
       artistRequest = this.getArtistSearch(artistName, page, page_size);
       listType = ListType.search;
     } else {
@@ -78,7 +81,7 @@ export class ArtistManagerService {
     artistRequest
       .pipe(map((res: ArtistList) => {
         res.artist_list = res.artist_list.map((el: Artist) => {
-          el.artist.is_favorite = favorites.some(val => val === el.artist.artist_id);
+          el.artist.is_favorite = Boolean(favorites.find(val => val === el.artist.artist_id));
           return el;
         });
         return res;
@@ -88,6 +91,18 @@ export class ArtistManagerService {
       }, () => {
         this.setCurrentState(false);
       });
+  }
+
+  getFavoriteList(): Observable<ArtistList> {
+    const favorites = this.favorites;
+
+    const favoritesRequest = favorites.map(id => {
+      return this.musixService.getArtistDetails(id);
+    });
+
+    return forkJoin(favoritesRequest).pipe(
+      map((res: Artist[]) => ({ artist_list: res }))
+    );
   }
 
   addFavoriteArtist(id: number) {

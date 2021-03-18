@@ -20,7 +20,16 @@
     {{ titleType[listType] }}
   </div>
   <app-search-bar (sendValue)="search($event)"></app-search-bar>
-  <div></div>
+  <div class="container-favorites">
+    <button
+      [class.view-favorites]="listType === ListType.favorites"
+      (click)="viewFavorites()"
+      mat-icon-button
+      matTooltip="View favorite list"
+    >
+      <mat-icon> favorite </mat-icon>
+    </button>
+  </div>
 </div>
 <div class="container-section">
   <div class="container-cards">

@@ -12,7 +12,8 @@ import { ArtistManagerService } from '../../shared/managers/artist-manager/artis
 })
 export class ArtistListComponent implements OnInit {
   artistList: Artist[] = [];
-  listType: ListType
+  listType: ListType;
+  ListType =  ListType;
 
   titleType = {
     favorites: 'Favorite List',
@@ -27,7 +28,6 @@ export class ArtistListComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistManager.artistList$.subscribe((res: DataRequest<ArtistList>) => {
-      console.log(res);
       this.listType = res.data.list_type;
       this.artistList = res.data.artist_list;
     });
@@ -43,7 +43,9 @@ export class ArtistListComponent implements OnInit {
     this.artistManager.addFavoriteArtist(id);
   }
 
-
+  viewFavorites() {
+    this.artistManager.getArtist(null, this.listType !== ListType.favorites);
+  }
 
   openDetails(artist: ArtistData) {
     this.dialog.open(ArtistDetailsComponent, {

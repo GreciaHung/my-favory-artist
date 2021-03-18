@@ -47,6 +47,14 @@
     text-align: center;
   }
 
+  .container-favorites {
+    text-align: end;
+
+    > * {
+      margin-right: 60px;
+    }
+  }
+
   > * {
     width: 100%;
     max-width: 800px;
@@ -72,4 +80,8 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-auto-rows: 350px;
   background-color: #efeaea;
+}
+
+.view-favorites {
+  color: red;
 }

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ArtistList, PaginateReq } from '../global-interfaces';
+import { Artist, ArtistList, PaginateReq } from '../global-interfaces';
 import { END_POINTS_URLS } from '../global-variables';
 
 @Injectable({
@@ -39,14 +39,14 @@ export class MusixService {
     );
   }
 
-  getArtistDetails(artistId: number): Observable<any> {
+  getArtistDetails(artistId: number): Observable<Artist> {
     const params: HttpParams = new HttpParams({
       fromObject: {
         artist_id: String(artistId)
       }
     })
 
-    return this.httpClient.get<any>(
+    return this.httpClient.get<Artist>(
       environment.baseUrl + END_POINTS_URLS.artist_get,
       { params }
     );
