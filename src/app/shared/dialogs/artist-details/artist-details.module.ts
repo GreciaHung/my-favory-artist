@@ -5,6 +5,9 @@ import { ArtistDetailsComponent } from '../artist-details/artist-details.compone
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule,
     MatExpansionModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatProgressBarModule
   ]
 })
 export class ArtistDetailsModule { }

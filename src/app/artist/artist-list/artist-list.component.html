@@ -22,12 +22,12 @@
   <app-search-bar (sendValue)="search($event)"></app-search-bar>
   <div class="container-favorites">
     <button
-      [class.view-favorites]="listType === ListType.favorites"
+      class="view-favorites"
       (click)="viewFavorites()"
       mat-icon-button
       matTooltip="View favorite list"
     >
-      <mat-icon> favorite </mat-icon>
+      <mat-icon> {{ listType === ListType.favorites ? "favorite" : "favorite_border" }} </mat-icon>
     </button>
   </div>
 </div>

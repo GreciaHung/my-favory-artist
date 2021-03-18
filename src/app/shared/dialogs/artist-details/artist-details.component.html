@@ -1,11 +1,34 @@
-<mat-accordion>
-  <mat-expansion-panel
-    *ngFor="let data of albumList"
-    (opened)="getTracks(data.album.album_id)"
-  >
-    <mat-expansion-panel-header>
-      <mat-panel-title> Album {{ data.album.album_name }} </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p *ngFor="let tackData of tackList">{{ tackData.track.track_name }}</p>
-  </mat-expansion-panel>
-</mat-accordion>
+<div mat-dialog-title>
+  <div class="container-header">
+    <span class="title-modal">{{ dataModal.artist_name }}</span>
+    <button
+      class="favorite"
+      (click)="addFavorite(dataModal.artist_id)"
+      mat-icon-button
+      matTooltip="Add/remove from favorites"
+    >
+      <mat-icon>
+        {{ dataModal.is_favorite ? "favorite" : "favorite_border" }}
+      </mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <mat-progress-bar [class.hidden-loading]="!loading" mode="indeterminate"></mat-progress-bar>
+  <div class="not-data" *ngIf="!loading && !albumList.length">
+    You have no albums to display
+  </div>
+  <div class="container-accordion">
+    <mat-accordion>
+      <mat-expansion-panel
+        *ngFor="let data of albumList"
+        (opened)="getTracks(data.album.album_id)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Album {{ data.album.album_name }} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngFor="let tackData of tackList">{{ tackData.track.track_name }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
