@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Artist, ArtistList, PaginateReq } from '../global-interfaces';
+import { AlbumList, Artist, ArtistList, PaginateReq, TrackList } from '../global-interfaces';
 import { END_POINTS_URLS } from '../global-variables';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MusixService {
   artistTop(paginate: PaginateReq): Observable<ArtistList> {
     const params: HttpParams = new HttpParams({
       fromObject: { ...paginate }
-    })
+    });
 
     return this.httpClient.get<ArtistList>(
       environment.baseUrl + END_POINTS_URLS.artist_artists_get,
@@ -31,7 +31,7 @@ export class MusixService {
         ...paginate,
         q_artist: artistName
       }
-    })
+    });
 
     return this.httpClient.get<ArtistList>(
       environment.baseUrl + END_POINTS_URLS.artist_search,
@@ -44,7 +44,7 @@ export class MusixService {
       fromObject: {
         artist_id: String(artistId)
       }
-    })
+    });
 
     return this.httpClient.get<Artist>(
       environment.baseUrl + END_POINTS_URLS.artist_get,
@@ -52,15 +52,28 @@ export class MusixService {
     );
   }
 
-  getArtistAlbums(artistId: number): Observable<any> {
+  getArtistAlbums(artistId: number): Observable<AlbumList> {
     const params: HttpParams = new HttpParams({
       fromObject: {
         artist_id: String(artistId)
       }
-    })
+    });
 
-    return this.httpClient.get<any>(
-      environment.baseUrl + END_POINTS_URLS.album_get,
+    return this.httpClient.get<AlbumList>(
+      environment.baseUrl + END_POINTS_URLS.artist_album_get,
+      { params }
+    );
+  }
+
+  getAlbumTracks(albumId: number): Observable<TrackList> {
+    const params: HttpParams = new HttpParams({
+      fromObject: {
+        album_id: String(albumId)
+      }
+    });
+
+    return this.httpClient.get<TrackList>(
+      environment.baseUrl + END_POINTS_URLS.album_tracks_get,
       { params }
     );
   }

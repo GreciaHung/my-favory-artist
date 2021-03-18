@@ -29,3 +29,28 @@ export interface ArtistData {
   artist_twitter_url: string;
   is_favorite: boolean;
 }
+
+export interface AlbumList {
+  album_list: Album[];
+}
+
+export interface Album {
+  album: AlbumData;
+}
+
+interface AlbumData {
+  album_id: number;
+  album_name: string;
+}
+
+export interface TrackList {
+  track_list: Track[];
+}
+
+export interface Track {
+  track: TrackData;
+}
+
+interface TrackData {
+  track_name: string;
+}

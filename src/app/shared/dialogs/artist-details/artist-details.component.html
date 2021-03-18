@@ -1,25 +1,11 @@
 <mat-accordion>
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel
+    *ngFor="let data of albumList"
+    (opened)="getTracks(data.album.album_id)"
+  >
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{dataModal.artist_name}}
-      </mat-panel-title>
-      <mat-panel-description>
-        <mat-icon>{{dataModal.is_favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
-      </mat-panel-description>
+      <mat-panel-title> Album {{ data.album.album_name }} </mat-panel-title>
     </mat-expansion-panel-header>
+    <p *ngFor="let tackData of tackList">{{ tackData.track.track_name }}</p>
   </mat-expansion-panel>
-  <div *ngFor="let data of AlbumList">
-    <mat-expansion-panel
-      (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false"
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Album {{data.album_id}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>{{data.album_name}}</p>
-    </mat-expansion-panel>
-  </div>
 </mat-accordion>
