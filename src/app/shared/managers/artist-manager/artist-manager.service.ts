@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
+import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ListType } from '../../global-enums';
 import { Artist, ArtistList, DataRequest } from '../../global-interfaces';
@@ -83,6 +83,7 @@ export class ArtistManagerService {
     }
 
     this.setCurrentState(true);
+
     artistRequest
       .pipe(map((res: ArtistList) => {
         res.artist_list = res.artist_list.map((el: Artist) => {
@@ -105,9 +106,11 @@ export class ArtistManagerService {
       return this.musixService.getArtistDetails(id);
     });
 
-    return forkJoin(favoritesRequest).pipe(
-      map((res: Artist[]) => ({ artist_list: res }))
-    );
+    return !favoritesRequest.length
+      ? of({ artist_list: [] })
+      : forkJoin(favoritesRequest).pipe(
+        map((res: Artist[]) => ({ artist_list: res }))
+      );
   }
 
   addFavoriteArtist(id: number) {

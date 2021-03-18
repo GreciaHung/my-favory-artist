@@ -27,11 +27,11 @@
     <ng-container *ngTemplateOutlet="favoriteRef"> </ng-container>
   </div>
 </div>
+<mat-progress-bar
+  [class.hidden-loading]="!loading"
+  mode="indeterminate"
+></mat-progress-bar>
 <div class="container-section">
-  <mat-progress-bar
-    [class.hidden-loading]="!loading"
-    mode="indeterminate"
-  ></mat-progress-bar>
   <div class="container-cards">
     <app-artist-card
       *ngFor="let data of artistList"

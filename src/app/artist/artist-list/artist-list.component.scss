@@ -77,6 +77,10 @@
   }
 }
 
+.hidden-loading {
+  visibility: hidden;
+}
+
 .container-section {
   display: flex;
   justify-content: center;
@@ -86,10 +90,6 @@
       (#{$margin-height-search} * 2)
   );
   overflow-y: auto;
-
-  .hidden-loading {
-    visibility: hidden;
-  }
 }
 
 .container-cards {

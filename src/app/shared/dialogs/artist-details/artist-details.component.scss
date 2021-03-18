@@ -1,4 +1,5 @@
 @import "../../../../assets/theme.scss";
+@import "../../../../assets/mixins/media-querys";
 
 .mat-dialog-title {
   display: flex;
@@ -51,4 +52,14 @@
   font-size: 20px;
   font-weight: 500;
   align-self: center;
+}
+
+@include phone-query {
+  .mat-dialog-content {
+    min-width: inherit;
+  }
+
+  .album-title {
+    display: none;
+  }
 }
