@@ -51,4 +51,17 @@ export class MusixService {
       { params }
     );
   }
+
+  getArtistAlbums(artistId: number): Observable<any> {
+    const params: HttpParams = new HttpParams({
+      fromObject: {
+        artist_id: String(artistId)
+      }
+    })
+
+    return this.httpClient.get<any>(
+      environment.baseUrl + END_POINTS_URLS.album_get,
+      { params }
+    );
+  }
 }
