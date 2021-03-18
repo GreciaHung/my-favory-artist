@@ -61,20 +61,25 @@ export class ArtistManagerService {
     return favorites ? JSON.parse(favorites) : [];
   }
 
-  getArtist(artistName?: string, getFavorites = false, page = '1', page_size = '12', country = 'us') {
+  getArtist(typeList = ListType.top, artistName?: string, page_size = '12', page = '1', country = 'us') {
     const favorites = this.favorites;
     let artistRequest: Observable<ArtistList>;
     let listType: ListType;
 
-    if (getFavorites) {
-      artistRequest = this.getFavoriteList();
-      listType = ListType.favorites;
-    } else if (artistName) {
-      artistRequest = this.getArtistSearch(artistName, page, page_size);
-      listType = ListType.search;
-    } else {
-      artistRequest = this.getArtistTop(page, page_size, country);
-      listType = ListType.top;
+    switch (typeList) {
+      case ListType.search:
+        artistRequest = this.getArtistSearch(artistName, page, page_size);
+        listType = ListType.search;
+        break;
+      case ListType.favorites:
+        artistRequest = this.getFavoriteList();
+        listType = ListType.favorites;
+        break;
+
+      default:
+        artistRequest = this.getArtistTop(page, page_size, country);
+        listType = ListType.top;
+        break;
     }
 
     this.setCurrentState(true);

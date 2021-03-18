@@ -14,7 +14,7 @@ export class ArtistListComponent implements OnInit {
   artistList: Artist[] = [];
   loading = false;
   listType: ListType;
-  ListType =  ListType;
+  ListType = ListType;
 
   titleType = {
     favorites: 'Favorite List',
@@ -38,7 +38,11 @@ export class ArtistListComponent implements OnInit {
   }
 
   search(searchValue: string) {
-    this.artistManager.getArtist(searchValue);
+    if (searchValue) {
+      this.artistManager.getArtist(ListType.search, searchValue, '100');
+    } else {
+      this.artistManager.getArtist();
+    }
   }
 
   addFavorite(id: number) {
@@ -46,7 +50,7 @@ export class ArtistListComponent implements OnInit {
   }
 
   viewFavorites() {
-    this.artistManager.getArtist(null, this.listType !== ListType.favorites);
+    this.artistManager.getArtist(this.listType !== ListType.favorites ? ListType.favorites : ListType.top);
   }
 
   openDetails(artist: ArtistData) {
