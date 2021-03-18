@@ -10,8 +10,13 @@ import { MusixService } from '../../services/musix.service';
 })
 export class ArtistDetailsComponent implements OnInit {
   panelOpenState = false;
+  AlbumList=[
+    {album_id:'01',album_name:'gatitos'},
+    {album_id:'02',album_name:'perros'},
+  ]
 
   constructor(
+    
     @Inject(MAT_DIALOG_DATA) public dataModal: ArtistData,
     private readonly musixService: MusixService
   ) {

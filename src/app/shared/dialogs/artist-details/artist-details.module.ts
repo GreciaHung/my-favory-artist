@@ -4,6 +4,7 @@ import { ArtistDetailsComponent } from '../artist-details/artist-details.compone
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ]
 })
 export class ArtistDetailsModule { }
