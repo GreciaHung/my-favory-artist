@@ -25,13 +25,19 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDetails(this.dataModal.artist_id)
+    this.getDetails(this.dataModal.artist_id);
+    this.getALbums(this.dataModal.artist_id);
+
   }
 
   getDetails(id: number) {
     this.musixService.getArtistDetails(id).subscribe(res => {
-      console.log(res);
+    })
+  }
 
+  getALbums(id: number) {
+    this.musixService.getArtistAlbums(id).subscribe(res => {
+      console.log(res);
     })
   }
 
