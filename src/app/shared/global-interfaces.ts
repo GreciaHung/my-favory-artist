@@ -1,3 +1,5 @@
+import { ListType } from "./global-enums";
+
 export interface PaginateReq {
   page: string;
   page_size: string;
@@ -11,7 +13,8 @@ export interface DataRequest<T> {
 }
 
 export interface ArtistList {
-  artist_list: Artist[]
+  artist_list: Artist[],
+  list_type: ListType
 }
 
 export interface Artist {

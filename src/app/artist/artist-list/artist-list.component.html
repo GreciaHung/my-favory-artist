@@ -16,7 +16,11 @@
   </div>
 </div>
 <div class="container-search">
+  <div class="current-title">
+    {{ titleType[listType] }}
+  </div>
   <app-search-bar (sendValue)="search($event)"></app-search-bar>
+  <div></div>
 </div>
 <div class="container-section">
   <div class="container-cards">

@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ListType } from '../../global-enums';
 import { Artist, ArtistList, DataRequest } from '../../global-interfaces';
 import { MusixService } from '../../services/musix.service';
 
 const InitialState: DataRequest<ArtistList> = {
-  data: { artist_list: [] },
+  data: {
+    artist_list: [],
+    list_type: ListType.top
+  },
   loaded: false,
   loading: false
 }
@@ -59,10 +63,16 @@ export class ArtistManagerService {
 
   getArtist(artistName?: string, page = '1', page_size = '12', country = 'us') {
     const favorites = this.favorites;
+    let artistRequest: Observable<ArtistList>;
+    let listType: ListType;
 
-    const artistRequest = artistName
-      ? this.getArtistSearch(artistName, page, page_size)
-      : this.getArtistTop(page, page_size, country);
+    if (artistName) {
+      artistRequest = this.getArtistSearch(artistName, page, page_size);
+      listType = ListType.search;
+    } else {
+      artistRequest = this.getArtistTop(page, page_size, country);
+      listType = ListType.top;
+    }
 
     this.setCurrentState(true);
     artistRequest
@@ -74,7 +84,7 @@ export class ArtistManagerService {
         return res;
       }))
       .subscribe((res: ArtistList) => {
-        this.setCurrentState(false, true, res);
+        this.setCurrentState(false, true, { ...res, list_type: listType });
       }, () => {
         this.setCurrentState(false);
       });

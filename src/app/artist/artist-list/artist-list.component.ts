@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ListType } from '../../shared/global-enums';
 import { ArtistDetailsComponent } from '../../shared/dialogs/artist-details/artist-details.component';
 import { Artist, ArtistData, ArtistList, DataRequest } from '../../shared/global-interfaces';
 import { ArtistManagerService } from '../../shared/managers/artist-manager/artist-manager.service';
@@ -11,6 +12,13 @@ import { ArtistManagerService } from '../../shared/managers/artist-manager/artis
 })
 export class ArtistListComponent implements OnInit {
   artistList: Artist[] = [];
+  listType: ListType
+
+  titleType = {
+    favorites: 'Favorite List',
+    top: 'In the top 12',
+    search: 'Search results'
+  }
 
   constructor(
     private readonly artistManager: ArtistManagerService,
@@ -19,6 +27,8 @@ export class ArtistListComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistManager.artistList$.subscribe((res: DataRequest<ArtistList>) => {
+      console.log(res);
+      this.listType = res.data.list_type;
       this.artistList = res.data.artist_list;
     });
 
@@ -32,6 +42,8 @@ export class ArtistListComponent implements OnInit {
   addFavorite(id: number) {
     this.artistManager.addFavoriteArtist(id);
   }
+
+
 
   openDetails(artist: ArtistData) {
     this.dialog.open(ArtistDetailsComponent, {
